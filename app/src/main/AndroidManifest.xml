@@ -26,7 +26,9 @@
         <activity android:name=".developer2">
             android:supportsRtl="true"
         </activity>
-
+        <activity android:name=".developer3">
+            android:supportsRtl="true"
+        </activity>
         <activity android:name=".GirlsAddActivity">
             android:supportsRtl="true"
         </activity>

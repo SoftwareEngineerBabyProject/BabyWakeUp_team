@@ -120,7 +120,11 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
             //MainActivity.this.finish();
         }
-
+        else if(id ==R.id.catchcatch){
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this,developer3.class);
+            startActivity(intent);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
