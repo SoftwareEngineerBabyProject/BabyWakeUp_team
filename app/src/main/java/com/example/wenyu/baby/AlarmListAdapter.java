@@ -1,12 +1,18 @@
 package com.example.wenyu.baby;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wenyu.baby.database.DataBase_girl;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +20,20 @@ public class AlarmListAdapter extends BaseAdapter {
 
     private AlarmActivity alarmActivity;
     private List<Alarm> alarms = new ArrayList<Alarm>();
+    ArrayList<String> beauty = new ArrayList<String>();
+    ArrayList<String> tone = new ArrayList<String>();
+    public List<Girl> girl;//取得 DB 妹子資料
 
 
     public AlarmListAdapter(AlarmActivity alarmActivity) {
         this.alarmActivity = alarmActivity;
-//		Database.init(alarmActivity);
-//		alarms = Database.getAll();
+        DataBase_girl a= new DataBase_girl(alarmActivity.getApplicationContext());
+        girl =  a.getAll();
+        for (Girl sublist : girl)
+        {
+            beauty.add(sublist.getGirlsPhotoPath());
+            tone.add(sublist.getGirlRecordPath());
+        }
     }
 
     @Override
@@ -50,10 +64,19 @@ public class AlarmListAdapter extends BaseAdapter {
         checkBox.setTag(position);
         checkBox.setOnClickListener((View.OnClickListener) alarmActivity);
 
+
+        ImageView alarmImageView = (ImageView) view
+                .findViewById(R.id.imageView);
+        Bitmap bm = null;
+        File file = new File(beauty.get(alarm.getGirlsID()));//beauty.get(alarm.getGirlsID())
+        if (file.exists()) {
+            bm = BitmapFactory.decodeFile(beauty.get(alarm.getGirlsID()));
+        }
+        alarmImageView.setImageBitmap(bm);
+
         TextView alarmTimeView = (TextView) view
                 .findViewById(R.id.textView_alarm_time);
         alarmTimeView.setText(alarm.getAlarmTimeString());
-
 
         TextView alarmDaysView = (TextView) view
                 .findViewById(R.id.textView_alarm_days);

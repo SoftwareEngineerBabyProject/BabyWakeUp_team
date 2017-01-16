@@ -19,15 +19,12 @@ import java.lang.reflect.Field;
 
 //import com.example.wenyu.baby.service.AlarmServiceBroadcastReciever;
 
-/**
- * Created by wenyu on 2016/12/6.
- */
+
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,android.view.View.OnClickListener {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         try {
             ViewConfiguration config = ViewConfiguration.get(this);
             Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
@@ -50,10 +47,7 @@ public class BaseActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_item_new:
-                Intent newAlarmIntent = new Intent(this, AlarmPreferencesActivity.class);
-                startActivity(newAlarmIntent);
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

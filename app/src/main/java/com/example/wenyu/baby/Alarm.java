@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
 
 import com.example.wenyu.baby.alert.AlarmAlertBroadcastReciever;
 
@@ -16,24 +15,32 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-//import com.example.wenyu.baby.alert.AlarmAlertBroadcastReciever;
 
 public class Alarm implements Serializable {
 
+
     public enum Difficulty{
-        EASY,
-        MEDIUM,
-        HARD;
+
+        COCKROACH,
+        TYPE,
+        SHAKE,
+        GUESS,
+        MATH;
 
         @Override
         public String toString() {
             switch(this.ordinal()){
+
                 case 0:
-                    return "Easy";
+                    return "Cockroach";
                 case 1:
-                    return "Medium";
+                    return "Type";
                 case 2:
-                    return "Hard";
+                    return "Shake";
+                case 3:
+                    return "Guess";
+                case 4:
+                    return "Math";
             }
             return super.toString();
         }
@@ -70,34 +77,25 @@ public class Alarm implements Serializable {
         }
 
     }
+    //初始設定
     private static final long serialVersionUID = 8699489847426803789L;
     private int id;
     private Boolean alarmActive = true;
     private Calendar alarmTime = Calendar.getInstance();
     private Day[] days = {Day.MONDAY,Day.TUESDAY,Day.WEDNESDAY,Day.THURSDAY,Day.FRIDAY,Day.SATURDAY,Day.SUNDAY};
-    private String alarmTonePath = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString();
+
     private Boolean vibrate = true;
-    private String alarmName = "Alarm Clock";
-    private Difficulty difficulty = Difficulty.EASY;
+    //private String alarmName = "clock";
+    private Difficulty difficulty = Difficulty.MATH;
+
+    private String alarmPhotoPath="";
+    private String alarmTonePath="";
+    private int girls_id = 0;
 
     public Alarm() {
 
     }
 
-//	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
-//		out.defaultWriteObject();
-//		out.writeObject(getAlarmToneUri().getEncodedPath());
-//	}
-
-//	private void readObject(java.io.ObjectInputStream in) throws IOException {
-//		try {
-//			in.defaultReadObject();
-//			this.setAlarmToneUri(Uri.parse(in.readObject().toString()));
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 
     /**
      * @return the alarmActive
@@ -175,10 +173,7 @@ public class Alarm implements Serializable {
         return days;
     }
 
-    /**
-     * @param set
-     *            the repeatDays to set
-     */
+
     public void setDays(Day[] days) {
         this.days = days;
     }
@@ -219,13 +214,38 @@ public class Alarm implements Serializable {
     public void setAlarmTonePath(String alarmTonePath) {
         this.alarmTonePath = alarmTonePath;
     }
+    /**
+     * @return the alarmPhotoPath
+     */
+    public String getAlarmPhotoPath() {
+        return alarmPhotoPath;
+    }
 
+    /**
+     * @param alarmPhotoPath the alarmTonePath to set
+     */
+    public void setAlarmPhotoPath(String alarmPhotoPath) {
+        this.alarmPhotoPath = alarmPhotoPath;
+    }
     /**
      * @return the vibrate
      */
     public Boolean getVibrate() {
         return vibrate;
     }
+    /**
+     * @return the girls_id
+     */
+    public int getGirlsID() {
+        return girls_id;
+    }
+    /**
+     * @param girls_id the alarmTonePath to set
+     */
+    public void setGirlsID(int girls_id) {
+        this.girls_id = girls_id;
+    }
+
 
     /**
      * @param vibrate
@@ -238,25 +258,14 @@ public class Alarm implements Serializable {
     /**
      * @return the alarmName
      */
-    public String getAlarmName() {
-        return alarmName;
-    }
+    //public String getAlarmName() {
+    //return alarmName;
+    //}
 
-    /**
-     * @param alarmName
-     *            the alarmName to set
-     */
-    public void setAlarmName(String alarmName) {
-        this.alarmName = alarmName;
-    }
 
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
+    //public void setAlarmName(String alarmName) {this.alarmName = alarmName; }
 
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
+
 
     public int getId() {
         return id;
@@ -269,7 +278,7 @@ public class Alarm implements Serializable {
     public String getRepeatDaysString() {
         StringBuilder daysStringBuilder = new StringBuilder();
         if(getDays().length == Day.values().length){
-            daysStringBuilder.append("Every Day");
+            daysStringBuilder.append("每天");
         }else{
             Arrays.sort(getDays(), new Comparator<Day>() {
                 @Override
@@ -282,8 +291,6 @@ public class Alarm implements Serializable {
                 switch(d){
                     case TUESDAY:
                     case THURSDAY:
-//					daysStringBuilder.append(d.toString().substring(0, 4));
-//					break;
                     default:
                         daysStringBuilder.append(d.toString().substring(0, 3));
                         break;
@@ -296,6 +303,14 @@ public class Alarm implements Serializable {
         return daysStringBuilder.toString();
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public void schedule(Context context) {
         setAlarmActive(true);
 
@@ -305,8 +320,8 @@ public class Alarm implements Serializable {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, myIntent,PendingIntent.FLAG_CANCEL_CURRENT);
 
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-
         alarmManager.set(AlarmManager.RTC_WAKEUP, getAlarmTime().getTimeInMillis(), pendingIntent);
+        // alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, getAlarmTime().getTimeInMillis(),60*1000, pendingIntent);
     }
 
     public String getTimeUntilNextAlarmMessage(){
@@ -315,24 +330,25 @@ public class Alarm implements Serializable {
         long hours = timeDifference / (1000 * 60 * 60) - (days * 24);
         long minutes = timeDifference / (1000 * 60) - (days * 24 * 60) - (hours * 60);
         long seconds = timeDifference / (1000) - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
-        String alert = "Alarm will sound in ";
+        String alert = "可愛的妹子將在";
         if (days > 0) {
             alert += String.format(
-                    "%d days, %d hours, %d minutes and %d seconds", days,
+                    " %d 天, %d 時, %d 分, %d 秒", days,
                     hours, minutes, seconds);
         } else {
             if (hours > 0) {
-                alert += String.format("%d hours, %d minutes and %d seconds",
+                alert += String.format(" %d 時, %d 分, %d 秒",
                         hours, minutes, seconds);
             } else {
                 if (minutes > 0) {
-                    alert += String.format("%d minutes, %d seconds", minutes,
+                    alert += String.format(" %d 分, %d 秒", minutes,
                             seconds);
                 } else {
-                    alert += String.format("%d seconds", seconds);
+                    alert += String.format(" %d 秒", seconds);
                 }
             }
         }
+        alert += String.format("呼喚您 <3");
         return alert;
     }
 }
