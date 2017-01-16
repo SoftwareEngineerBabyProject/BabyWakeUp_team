@@ -13,6 +13,10 @@
         android:focusable="false"
         android:padding="5dp"
         />
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView" />
 
     <View
         android:id="@+id/view1"
@@ -21,7 +25,6 @@
         android:layout_marginRight="10dp"
         android:background="#CCCCCC"
         android:paddingRight="10dp" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +43,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
     </LinearLayout>
+
+
 
 </LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/delay" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#50ffffff"
+        android:text="關閉"
+        android:id="@+id/closed"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#50ffffff"
+        android:text="延遲"
+        android:id="@+id/delay"
+        android:layout_above="@+id/closed"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible"/>
+
+
+
+
+</RelativeLayout>

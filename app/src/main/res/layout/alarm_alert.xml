@@ -2,20 +2,39 @@
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#90FF8888">
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="北鼻~我數學題不會~\n幫我把它寫出來喔!M ua~"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:background="#003377"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/alert"
+            android:layout_weight="1"
+            android:alpha="0.7"
+            android:textColor="@android:color/background_light" />
+        </TableRow>
     <TableRow
         android:id="@+id/tableRow0"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
+        android:layout_height="0dp"
+        android:layout_weight="1" >
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
-
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_column="0"
+            android:textColor="#003377"
+            android:textSize="40dp"
+            android:layout_span="32" />
     </TableRow>
 
     <TableRow
@@ -26,11 +45,14 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black" />
+            android:textColor="#003377"
+            android:layout_column="0"
+            android:textSize="40dp"
+            android:layout_span="32" />
 
     </TableRow>
 
@@ -46,7 +68,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="1"
-            android:text="@string/_1" />
+            android:textSize="20dp"
+            android:text="@string/_1"
+            android:background="#80FFC8B4"/>
 
         <Button
             android:id="@+id/Button2"
@@ -54,7 +78,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="2"
-            android:text="@string/_2" />
+            android:textSize="20dp"
+            android:text="@string/_2"
+            android:background="#80ffffff"/>
 
         <Button
             android:id="@+id/Button3"
@@ -62,7 +88,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="3"
-            android:text="@string/_3" />
+            android:textSize="20dp"
+            android:text="@string/_3"
+            android:background="#80FFC8B4"/>
 
     </TableRow>
 
@@ -78,7 +106,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="4"
-            android:text="@string/_4" />
+            android:text="@string/_4"
+            android:textSize="20dp"
+            android:background="#80ffffff"/>
 
         <Button
             android:id="@+id/Button5"
@@ -86,7 +116,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="5"
-            android:text="@string/_5" />
+            android:text="@string/_5"
+            android:textSize="20dp"
+            android:background="#80FFC8B4"/>
 
         <Button
             android:id="@+id/Button6"
@@ -94,7 +126,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="6"
-            android:text="@string/_6" />
+            android:text="@string/_6"
+            android:textSize="20dp"
+            android:background="#80ffffff"/>
 
     </TableRow>
 
@@ -110,7 +144,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="7"
-            android:text="@string/_7" />
+            android:textSize="20dp"
+            android:text="@string/_7"
+            android:background="#80FFC8B4"/>
 
         <Button
             android:id="@+id/Button8"
@@ -118,7 +154,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="8"
-            android:text="@string/_8" />
+            android:textSize="20dp"
+            android:text="@string/_8"
+            android:background="#80ffffff"/>
 
         <Button
             android:id="@+id/Button9"
@@ -126,7 +164,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="9"
-            android:text="@string/_9" />
+            android:textSize="20dp"
+            android:text="@string/_9"
+            android:background="#80FFC8B4"/>
 
     </TableRow>
 
@@ -142,7 +182,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="."
-            android:text="@string/decimal_button_text" />
+            android:text="@string/decimal_button_text"
+            android:textSize="20dp"
+            android:background="#80ffffff"/>
 
         <Button
             android:id="@+id/Button0"
@@ -150,7 +192,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="0"
-            android:text="@string/_0" />
+            android:text="@string/_0"
+            android:textSize="20dp"
+            android:background="#80FFC8B4"/>
 
         <Button
             android:id="@+id/Button_minus"
@@ -158,7 +202,10 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:tag="-"
-            android:text="@string/minus_button_text" />
+            android:text="@string/minus_button_text"
+            android:textSize="20dp"
+            android:background="#80ffffff"
+            />
 
     </TableRow>
 
@@ -173,7 +220,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:tag="clear"
-            android:text="@string/clear_button_text" />
+            android:text="@string/clear_button_text"
+            android:textSize="20dp"
+            android:background="#60888888"/>
+
 
     </TableRow>
 
