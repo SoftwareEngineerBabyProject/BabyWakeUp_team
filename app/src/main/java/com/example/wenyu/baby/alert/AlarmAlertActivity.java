@@ -52,19 +52,10 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		Bundle bundle = this.getIntent().getExtras();
 		alarm = (Alarm) bundle.getSerializable("alarm");
 
-		this.setTitle(alarm.getAlarmName());
 
-		switch (alarm.getDifficulty()) {
-			case EASY:
-				mathProblem = new com.example.wenyu.baby.alert.MathProblem(3);
-				break;
-			case MEDIUM:
-				mathProblem = new com.example.wenyu.baby.alert.MathProblem(4);
-				break;
-			case HARD:
-				mathProblem = new com.example.wenyu.baby.alert.MathProblem(5);
-				break;
-		}
+		//this.setTitle(alarm.getAlarmName());
+
+		mathProblem = new com.example.wenyu.baby.alert.MathProblem(5);
 
 		answerString = String.valueOf(mathProblem.getAnswer());
 		if (answerString.endsWith(".0")) {
