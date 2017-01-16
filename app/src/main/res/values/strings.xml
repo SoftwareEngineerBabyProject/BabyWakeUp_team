@@ -6,7 +6,7 @@
 
     <string name="action_settings">Back</string>
     <string name="title_activity_set_alarms">Set Alarm</string>
-    <string name="no_alarms">No alarms have been set</string>
+    <string name="no_alarms">目前尚無設定的鬧鐘</string>
 
 
     <!-- Menu -->
@@ -14,6 +14,7 @@
     <string name="menu_item_new">New</string>
     <string name="menu_item_save">Save</string>
     <string name="menu_item_delete">Cancel</string>
+    <string name="menu_girls_new">Girls_New</string>
 
     <!-- Alert -->
     <string name="_0">0</string>
@@ -38,21 +39,21 @@
     <string name="cancel">Cancel</string>
     <string-array name="location">
         <item>基隆市</item>
-        <item>台北市</item>
+        <item>臺北市</item>
         <item>新北市</item>
         <item>桃園縣</item>
         <item>新竹市</item>
         <item>新竹縣</item>
         <item>苗栗縣</item>
-        <item>台中市</item>
+        <item>臺中市</item>
         <item>彰化縣</item>
         <item>雲林縣</item>
         <item>嘉義市</item>
         <item>嘉義縣</item>
-        <item>台南市</item>
+        <item>臺南市</item>
         <item>高雄市</item>
         <item>屏東縣</item>
-        <item>台東縣</item>
+        <item>臺東縣</item>
         <item>花蓮縣</item>
         <item>宜蘭縣</item>
         <item>南投縣</item>
